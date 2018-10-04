@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe Position do
+
+  subject { described_class.new(x, y,facing) }
+
+  let(:x) { 1 }
+  let(:y) { 2 }
+
   context 'Passed in valid coordinates' do
-    subject { described_class.new(1,2,:north) }
+    let(:facing) { :north }
 
     let(:expected_x) { 1 }
     let(:expected_y) { 2 }
@@ -19,6 +25,14 @@ describe Position do
 
     it 'holds correct facing value' do
       expect(subject.facing).to eq expected_facing
+    end
+  end
+
+  context 'passed invalid facing direction' do
+    let(:facing) { 'not a valid facing' }
+
+    it 'raises an error' do
+      expect { subject }.to raise_error(ArgumentError, 'Not a valid direction')
     end
   end
 end
