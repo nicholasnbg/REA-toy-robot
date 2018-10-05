@@ -10,7 +10,9 @@ class Position
     @facing = facing
   end
 
-
+  def ==(other)
+    x == other.x && y == other.y && facing == other.facing
+  end
 
   private
 

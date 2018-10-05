@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Position do
+  let(:position) { described_class.new(x, y,facing) }
 
-  subject { described_class.new(x, y,facing) }
+  subject { position }
 
   let(:x) { 1 }
   let(:y) { 2 }
@@ -33,6 +34,33 @@ describe Position do
 
     it 'raises an error' do
       expect { subject }.to raise_error(ArgumentError, 'Not a valid direction')
+    end
+  end
+
+  describe '#==' do
+    subject { position.==(comapared_position) }
+    let(:facing) { :north }
+
+    let(:comapared_position) { described_class.new(c_x, c_y, c_facing) }
+
+    context 'comparing Position with same coordinates' do
+      let (:c_x) { x }
+      let (:c_y) { y }
+      let(:c_facing) { facing }
+
+      it 'returns true' do
+        expect(subject).to eq true
+      end
+    end
+
+    context 'comparing Position with different coordinates' do
+      let (:c_x) { x+1 }
+      let (:c_y) { y+1 }
+      let(:c_facing) { :south }
+
+      it 'returns false' do
+        expect(subject).to eq false
+      end
     end
   end
 end
