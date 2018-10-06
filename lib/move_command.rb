@@ -1,6 +1,7 @@
 require_relative './movements'
+require_relative './command'
 
-class MoveCommand
+class MoveCommand < Command
   def initialize(robot, table)
     @robot = robot
     @table = table

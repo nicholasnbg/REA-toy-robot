@@ -1,6 +1,7 @@
 require_relative './movements'
+require_relative './command'
 
-class RightCommand
+class RightCommand < Command
   attr_reader :robot
   def initialize(robot)
     @robot = robot

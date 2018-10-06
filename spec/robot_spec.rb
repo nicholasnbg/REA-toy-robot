@@ -19,4 +19,8 @@ describe Robot do
       end
     end
   end
+
+  describe '#report' do
+
+  end
 end
