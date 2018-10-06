@@ -1,5 +1,6 @@
 require_relative './movements'
 require_relative './command'
+require_relative './error_reporter'
 
 class RightCommand < Command
   attr_reader :robot
@@ -12,7 +13,7 @@ class RightCommand < Command
       robot.current_position = Movements.rotate_right(@robot.current_position)
       puts "Turning right, now facing #{@robot.current_position.facing}"
     else
-      puts "Whoops, the robot hasn't been placed yet"
+      ErrorReporter.new("not_placed")
     end
   end
 end

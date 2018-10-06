@@ -1,5 +1,6 @@
 require_relative './movements'
 require_relative './command'
+require_relative 'error_reporter'
 
 class MoveCommand < Command
   def initialize(robot, table)
@@ -21,7 +22,7 @@ class MoveCommand < Command
       puts "Moving forward"
       @robot.current_position = new_position
     else
-      puts  "Whoops! Can't move there..."
+      ErrorReporter.new("invalid_move")
     end
   end
 

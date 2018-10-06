@@ -27,6 +27,10 @@ describe LeftCommand do
       it 'leaves robot current position unchanged' do
         expect(robot.current_position).to eq nil
       end
+
+      it 'returns and ErrorReporter' do
+        expect(subject).to be_a(ErrorReporter)
+      end
     end
   end
 end

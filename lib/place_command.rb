@@ -1,3 +1,5 @@
+require_relative './error_reporter'
+
 class PlaceCommand
   attr_reader :robot, :table, :position
   def initialize(robot, table, position)
@@ -11,7 +13,7 @@ class PlaceCommand
       puts "Placed at #{@position.x}, #{@position.y}, facing #{@position.facing}"
       @robot.current_position = @position
     else
-      puts "Whoops, this is not a valid position"
+      ErrorReporter.new("invalid_position")
     end
   end
 end

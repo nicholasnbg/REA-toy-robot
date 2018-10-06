@@ -32,6 +32,10 @@ describe MoveCommand do
         it 'keeps robot at same position' do
           expect(robot.current_position).to eq expected_position
         end
+
+        it 'returns ErrorReporter' do
+          expect(subject).to be_a(ErrorReporter)
+        end
       end
     end
 

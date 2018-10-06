@@ -28,6 +28,10 @@ describe PlaceCommand do
       it 'does not place robot at position' do
         expect(robot.current_position).not_to eq position
       end
+
+      it 'returns ErrorReporter' do
+        expect(subject).to be_a(ErrorReporter)
+      end
     end
   end
 end
