@@ -2,10 +2,10 @@ class Robot
   attr_accessor :current_position
 
   def initialize
-    @current_position = nil
+    @current_position
   end
 
   def placed?
-    current_position != nil
+    !@current_position.nil?
   end
 end
