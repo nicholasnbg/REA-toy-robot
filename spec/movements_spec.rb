@@ -52,4 +52,46 @@ describe Movements do
       end
     end
   end
+
+  describe '#move_forward' do
+    subject { described_class.move_forward(starting_position) }
+
+    let(:starting_position) { Position.new(2,2, facing) }
+
+    context 'while facing north' do
+      let(:facing) { :north }
+      let(:expected_position) { Position.new(2,3, facing) }
+
+      it 'returns correct new position' do
+        expect(subject).to eq expected_position
+      end
+    end
+
+    context 'while facing east' do
+      let(:facing) { :east }
+      let(:expected_position) { Position.new(3,2, facing) }
+
+      it 'returns correct new position' do
+        expect(subject).to eq expected_position
+        end
+    end
+
+    context 'while facing south' do
+      let(:facing) { :south }
+      let(:expected_position) { Position.new(2,1, facing) }
+
+      it 'returns correct new position' do
+        expect(subject).to eq expected_position
+      end
+    end
+
+    context 'while facing west' do
+      let(:facing) { :west }
+      let(:expected_position) { Position.new(1,2, facing) }
+
+      it 'returns correct new position' do
+        expect(subject).to eq expected_position
+      end
+    end
+  end
 end

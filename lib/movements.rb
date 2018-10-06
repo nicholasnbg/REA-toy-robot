@@ -17,6 +17,18 @@ class Movements
       Position.new(position.x, position.y, new_facing)
     end
 
+    def move_forward(position)
+      translate = {
+          x: translations[position.facing][0],
+          y: translations[position.facing][1]
+      }
+
+      new_x = position.x + translate[:x]
+      new_y = position.y + translate[:y]
+
+      Position.new(new_x, new_y, position.facing)
+    end
+
     private
     def bearings
       %i[north east south west]
