@@ -10,6 +10,6 @@ class Robot
   end
 
   def report
-    puts "Location: x: #{current_position.x}, y: #{current_position.y}, facing #{current_position.facing.to_s}"
+    "Location: x: #{@current_position.x}, y: #{@current_position.y}, facing #{@current_position.facing.to_s}"
   end
 end

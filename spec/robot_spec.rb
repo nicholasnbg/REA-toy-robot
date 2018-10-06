@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Robot do
   let(:robot) { described_class.new }
+  let(:position) { Position.new(2,2,:north) }
+  let(:table) { Table.new(5,5) }
+  let(:place_command) { PlaceCommand.new(robot, table, position) }
 
   describe '#placed?' do
     subject { robot.placed? }
@@ -12,7 +15,7 @@ describe Robot do
     end
 
     context 'robot is placed' do
-      before { robot.current_position = true }
+      before { place_command.execute }
 
       it 'returns true' do
         expect(subject).to eq true
@@ -21,6 +24,12 @@ describe Robot do
   end
 
   describe '#report' do
+    subject { robot.report }
 
+    before { place_command.execute }
+
+    it 'reports location' do
+      expect(subject).to be_a(String)
+    end
   end
 end
