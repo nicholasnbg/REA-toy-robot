@@ -57,34 +57,49 @@ describe Parser do
     end
 
     context 'passed command with arguments' do
-      context 'passed "clean" place arguement' do
-        let(:input) { "place 1,2,north" }
-        let(:expected_command) { "place" }
-        let(:expected_args) { ['1','2','north'] }
+      context 'passed place command' do
+        context 'with clean arguements' do
+          let(:input) { "place 1,2,north" }
+          let(:expected_command) { "place" }
+          let(:expected_args) { ['1','2','north'] }
 
-        it 'returns CommandRequest object' do
-          expect(subject).to be_a (CommandRequest)
+          it 'returns CommandRequest object' do
+            expect(subject).to be_a (CommandRequest)
+          end
+
+          it 'has @command of "place"' do
+            expect(subject.command).to eq expected_command
+          end
+
+          it 'has @args of ["1","2","north"]' do
+            expect(subject.args).to eq expected_args
+          end
         end
 
-        it 'has @command of "place"' do
-          expect(subject.command).to eq expected_command
+        context 'with spacing between arguments' do
+          let(:input) { "place 1  ,  2   ,     north" }
+          let(:expected_args) { ['1','2','north'] }
+
+          it 'returns CommandRequest object' do
+            expect(subject).to be_a (CommandRequest)
+          end
+
+          it 'has @args of ["1","2","north"]' do
+            expect(subject.args).to eq expected_args
+          end
         end
 
-        it 'has @args of ["1","2","north"]' do
-          expect(subject.args).to eq expected_args
-        end
-      end
+        context 'with non number arguments for x + y' do
+          let(:input) { "place text, text, north" }
+          let(:expected_args) { [nil, nil, "north"] }
 
-      context 'passed place arguement with spacing between arguments' do
-        let(:input) { "place 1  ,  2   ,     north" }
-        let(:expected_args) { ['1','2','north'] }
+          it 'returns CommandRequest object' do
+            expect(subject).to be_a (CommandRequest)
+          end
 
-        it 'returns CommandRequest object' do
-          expect(subject).to be_a (CommandRequest)
-        end
-
-        it 'has @args of ["1","2","north"]' do
-          expect(subject.args).to eq expected_args
+          it 'has @args of [nil,nil,"north"]' do
+            expect(subject.args).to eq expected_args
+          end
         end
       end
     end

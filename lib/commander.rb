@@ -25,8 +25,8 @@ class Commander
 
     case command
     when 'place'
-      x = args[0].to_i
-      y = args[1].to_i
+      x = args[0]
+      y = args[1]
       facing = args[2].to_sym
 
       position = Position.new(x, y, facing)
