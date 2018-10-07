@@ -5,8 +5,8 @@ class Position
 
     raise(ArgumentError, 'Not a valid direction') unless valid_facing
 
-    @x = x
-    @y = y
+    @x = x.to_i
+    @y = y.to_i
     @facing = facing
   end
 

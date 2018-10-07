@@ -27,4 +27,9 @@ class ErrorReporter
       @error_message = "Whoops, something went wrong"
     end
   end
+
+  def print_error
+    puts "Error: #{@error_name}"
+    puts "Message: #{@error_message}"
+  end
 end

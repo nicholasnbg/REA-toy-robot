@@ -12,7 +12,7 @@ class MoveCommand < Command
     if(@robot.placed?)
       move_robot_forward
     else
-      "Sorry, robot not placed yet"
+      ErrorReporter.new("not_placed").print_error
     end
   end
 
@@ -22,7 +22,7 @@ class MoveCommand < Command
       puts "Moving forward"
       @robot.current_position = new_position
     else
-      ErrorReporter.new("invalid_move")
+      ErrorReporter.new("invalid_move").print_error
     end
   end
 

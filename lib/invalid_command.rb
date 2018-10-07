@@ -7,6 +7,6 @@ class InvalidCommand < Command
     super(robot)
   end
   def execute
-    ErrorReporter.new("invalid_command")
+    ErrorReporter.new("invalid_command").print_error
   end
 end
