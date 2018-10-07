@@ -1,10 +1,13 @@
 require_relative 'lib/robot'
 require_relative 'lib/table'
 require_relative 'lib/commander'
+require_relative './dialogue'
 
 robot = Robot.new
 table = Table.new(5,5)
 commander = Commander.new(robot, table)
+
+Dialogue.intro_dialogue
 
 loop do
   puts ''
@@ -19,6 +22,10 @@ loop do
 
   break if input.downcase.match(/^exit$/)
 
-  command = commander.return_command(input)
-  command.execute
+  if input.downcase.match(/^help$/)
+    Dialogue.help_dialogue
+  else
+    command = commander.return_command(input)
+    command.execute
+  end
 end

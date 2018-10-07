@@ -3,11 +3,9 @@ class Position
   def initialize(x, y, facing)
     valid_facing = bearings.include?(facing)
 
-    raise(ArgumentError, 'Not a valid direction') unless valid_facing
-
     @x = x.to_i
     @y = y.to_i
-    @facing = facing
+    @facing = valid_facing ? facing : nil
   end
 
   def ==(other)

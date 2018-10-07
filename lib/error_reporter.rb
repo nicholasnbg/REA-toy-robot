@@ -6,6 +6,7 @@ class ErrorReporter
     @error_message
 
     set_error
+    print_error
   end
 
   def set_error
@@ -16,6 +17,9 @@ class ErrorReporter
     when "invalid_command"
       @error_name = "InvalidCommand"
       @error_message = "Sorry, that is not a valid command"
+    when "invalid_facing"
+      @error_name = "InvalidFacing"
+      @error_message = "Whoops, that direction is not valid"
     when "invalid_move"
       @error_name = "InvalidMove"
       @error_message = "Sorry, you can't move there"
