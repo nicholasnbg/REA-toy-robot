@@ -22,14 +22,14 @@ describe Robot do
       end
     end
   end
-
-  describe '#report' do
-    subject { robot.report }
-
-    before { place_command.execute }
-
-    it 'reports location' do
-      expect(subject).to be_a(String)
-    end
-  end
+  #
+  # describe '#report' do
+  #   subject { robot.report }
+  #
+  #   before { place_command.execute }
+  #
+  #   it 'reports location' do
+  #     expect(subject).to be_a(String)
+  #   end
+  # end
 end

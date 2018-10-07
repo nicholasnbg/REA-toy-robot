@@ -32,8 +32,8 @@ describe Position do
   context 'passed invalid facing direction' do
     let(:facing) { 'not a valid facing' }
 
-    it 'raises an error' do
-      expect { subject }.to raise_error(ArgumentError, 'Not a valid direction')
+    it 'sets facing to nil' do
+      expect(subject.facing ).to eq nil
     end
   end
 

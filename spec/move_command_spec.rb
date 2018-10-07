@@ -44,7 +44,7 @@ describe MoveCommand do
       before { subject }
 
       it 'returns not-placed error' do
-        expect(subject).to eq 'Sorry, robot not placed yet'
+        expect(subject).to be_a ErrorReporter
       end
     end
   end
