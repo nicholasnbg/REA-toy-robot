@@ -4,8 +4,4 @@ class CommandRequest
     @command = command
     @args = args
   end
-
-  def ==(other)
-    command == other.command && args == other.args
-  end
 end
