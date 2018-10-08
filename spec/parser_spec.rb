@@ -7,11 +7,11 @@ describe Parser do
 
     context 'passed single word strings/commands' do
       context 'passed "move"' do
-        let(:input) { "move" }
-        let(:expected_command) { "move" }
+        let(:input) { 'move' }
+        let(:expected_command) { 'move' }
 
         it 'returns CommandRequest object' do
-          expect(subject).to be_a (CommandRequest)
+          expect(subject).to be_a CommandRequest
         end
 
         it 'has @command of "move"' do
@@ -20,11 +20,11 @@ describe Parser do
       end
 
       context 'passed with extra whitespace at start and end' do
-        let(:input) { "   right    " }
-        let(:expected_command) { "right" }
+        let(:input) { '   right    ' }
+        let(:expected_command) { 'right' }
 
         it 'returns CommandRequest object' do
-          expect(subject).to be_a (CommandRequest)
+          expect(subject).to be_a CommandRequest
         end
 
         it 'has @command of "right"' do
@@ -33,10 +33,10 @@ describe Parser do
       end
 
       context 'passed with only whitespace' do
-        let(:input) {" "}
+        let(:input) {' '}
 
         it 'returns CommandRequest object' do
-          expect(subject).to be_a (CommandRequest)
+          expect(subject).to be_a CommandRequest
         end
 
         it 'has @command of nil' do
@@ -47,7 +47,7 @@ describe Parser do
       context 'passed with no argument' do
         let(:input) {}
         it 'returns CommandRequest object' do
-          expect(subject).to be_a (CommandRequest)
+          expect(subject).to be_a CommandRequest
         end
 
         it 'has @command of nil' do
@@ -59,12 +59,12 @@ describe Parser do
     context 'passed command with arguments' do
       context 'passed place command' do
         context 'with clean arguements' do
-          let(:input) { "place 1,2,north" }
-          let(:expected_command) { "place" }
-          let(:expected_args) { ['1','2','north'] }
+          let(:input) { 'place 1,2,north' }
+          let(:expected_command) { 'place' }
+          let(:expected_args) { %w[1 2 north] }
 
           it 'returns CommandRequest object' do
-            expect(subject).to be_a (CommandRequest)
+            expect(subject).to be_a CommandRequest
           end
 
           it 'has @command of "place"' do
@@ -77,11 +77,11 @@ describe Parser do
         end
 
         context 'with spacing between arguments' do
-          let(:input) { "place 1  ,  2   ,     north" }
-          let(:expected_args) { ['1','2','north'] }
+          let(:input) { 'place 1  ,  2   ,     north' }
+          let(:expected_args) { %w[1 2 north] }
 
           it 'returns CommandRequest object' do
-            expect(subject).to be_a (CommandRequest)
+            expect(subject).to be_a CommandRequest
           end
 
           it 'has @args of ["1","2","north"]' do
@@ -90,11 +90,11 @@ describe Parser do
         end
 
         context 'with non number arguments for x + y' do
-          let(:input) { "place text, text, north" }
-          let(:expected_args) { [nil, nil, "north"] }
+          let(:input) { 'place text, text, north' }
+          let(:expected_args) { [nil, nil, 'north'] }
 
           it 'returns CommandRequest object' do
-            expect(subject).to be_a (CommandRequest)
+            expect(subject).to be_a CommandRequest
           end
 
           it 'has @args of [nil,nil,"north"]' do

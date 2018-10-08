@@ -9,15 +9,15 @@ class PlaceCommand
   end
 
   def execute
-    if @position.facing != nil
+    if !@position.facing.nil?
       if @table.valid_position?(@position)
         puts "Placed at #{@position.x}, #{@position.y}, facing #{@position.facing}"
         @robot.current_position = @position
       else
-        ErrorReporter.new("invalid_position")
+        ErrorReporter.new('invalid_position')
       end
     else
-      ErrorReporter.new("invalid_facing")
+      ErrorReporter.new('invalid_facing')
     end
   end
 end

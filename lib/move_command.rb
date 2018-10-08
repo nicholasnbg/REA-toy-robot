@@ -12,17 +12,17 @@ class MoveCommand < Command
     if(@robot.placed?)
       move_robot_forward
     else
-      ErrorReporter.new("not_placed")
+      ErrorReporter.new('not_placed')
     end
   end
 
   def move_robot_forward
     new_position = Movements.move_forward(@robot.current_position)
     if @table.valid_position?(new_position)
-      puts "Moving forward"
+      puts 'Moving forward'
       @robot.current_position = new_position
     else
-      ErrorReporter.new("invalid_move")
+      ErrorReporter.new('invalid_move')
     end
   end
 
