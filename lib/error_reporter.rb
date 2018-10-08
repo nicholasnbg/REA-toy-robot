@@ -26,6 +26,9 @@ class ErrorReporter
     when "invalid_position"
       @error_name = "InvalidPosition"
       @error_message = "Sorry, that is an invalid position"
+    when "no_test_file"
+      @error_name = "NoTestFile"
+      @error_message = "No such test file exists"
     else
       @error_name = "MiscError"
       @error_message = "Whoops, something went wrong"
