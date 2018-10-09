@@ -8,10 +8,12 @@ class Parser
   end
 
   def parse(input = '')
-    @command = input.to_s.downcase.split(' ')[0]
+    input.to_s.downcase
+    @args = input.split(' ')
+    @command = @args.shift
+    @args = @args.join('').split(',')
 
-    if input.to_s.split(' ').length > 1 && @command == 'place'
-      @args = input.to_s.downcase.split(' ')[1..-1].join('').split(',')
+    if @args.length > 1
       unless /[0-9]/.match(@args[0]) &&  /[0-9]/.match(@args[1])
         @args[0] = nil
         @args[1] = nil
