@@ -10,7 +10,8 @@ class RightCommand < Command
 
   def execute
     if @robot.placed?
-      robot.current_position = Movements.rotate_right(@robot.current_position)
+      new_position = Movements.rotate_right(@robot.current_position)
+      robot.current_position = new_position
       puts "Turning right, now facing #{@robot.current_position.facing}"
     else
       ErrorReporter.new('not_placed')

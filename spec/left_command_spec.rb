@@ -28,7 +28,7 @@ describe LeftCommand do
         expect(robot.current_position).to eq nil
       end
 
-      it 'returns and ErrorReporter' do
+      it 'returns an ErrorReporter' do
         expect(subject).to be_a(ErrorReporter)
       end
     end
