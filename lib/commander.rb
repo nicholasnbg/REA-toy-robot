@@ -8,10 +8,10 @@ require_relative './report_command'
 require_relative './invalid_command'
 
 class Commander
-  def initialize(robot, table)
+  def initialize(robot, table, parser)
     @robot = robot
     @table = table
-    @parser = Parser.new
+    @parser = parser
   end
 
   def return_command(input)
@@ -19,14 +19,16 @@ class Commander
     retrieve_command(command_request)
   end
 
+  private
+
   def retrieve_command(command_request)
     command = command_request.command
     args = command_request.args
 
     case command
     when 'place'
-      x = args[0]
-      y = args[1]
+      x = args[0].to_i
+      y = args[1].to_i
       facing = args[2].to_sym
 
       position = Position.new(x, y, facing)
