@@ -3,8 +3,8 @@ class Position
   def initialize(x, y, facing)
     valid_facing = bearings.include?(facing)
 
-    @x = x.to_i
-    @y = y.to_i
+    @x = x
+    @y = y
     @facing = valid_facing ? facing : nil
   end
 
