@@ -16,10 +16,10 @@ class PlaceCommand
         puts "Placed at #{@position.x}, #{@position.y}, facing #{@position.facing}"
         @robot.current_position = @position
       else
-        ErrorReporter.new('invalid_position')
+        ErrorReporter.error(RoboErrors::InvalidPosition.new)
       end
     else
-      ErrorReporter.new('invalid_position')
+      ErrorReporter.error(RoboErrors::InvalidPosition.new)
     end
   end
 end

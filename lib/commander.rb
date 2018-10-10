@@ -7,6 +7,9 @@ require_relative './commands/left_command'
 require_relative './commands/report_command'
 require_relative './commands/invalid_command'
 
+module RoboErrors
+end
+
 class Commander
   def initialize(robot, table, parser)
     @robot = robot

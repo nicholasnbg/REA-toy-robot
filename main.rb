@@ -7,6 +7,8 @@ parser = Parser.new
 commander = Commander.new(robot, table, parser)
 test_runner = TestFileRunner.new(commander, './tests/')
 
+
+
 Dialogue.intro_dialogue
 
 loop do
