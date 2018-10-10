@@ -7,6 +7,7 @@ describe TestFileRunner do
 
   describe '#run' do
     let(:test_file_name) { 'test_a.txt' }
+    let(:file_path) { "#{test_dir}#{test_file_name}" }
 
     subject { test_file_runner.run(test_file_name) }
 

@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Commander do
   let(:robot) { Robot.new }
   let(:table) { Table.new(5,5) }
-  let(:commander) { described_class.new(robot, table) }
+  let(:parser) { Parser.new}
+  let(:commander) { described_class.new(robot, table, parser) }
 
   describe '#return_command' do
     subject { commander.return_command(input) }

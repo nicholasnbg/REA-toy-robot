@@ -43,17 +43,6 @@ describe Parser do
           expect(subject.command).to eq nil
         end
       end
-
-      context 'passed with no argument' do
-        let(:input) {}
-        it 'returns CommandRequest object' do
-          expect(subject).to be_a CommandRequest
-        end
-
-        it 'has @command of nil' do
-          expect(subject.command).to eq nil
-        end
-      end
     end
 
     context 'passed command with arguments' do
