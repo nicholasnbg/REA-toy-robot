@@ -1,5 +1,5 @@
-require_relative './command'
-require_relative './error_reporter'
+require_relative '../command'
+require_relative '../error_reporter'
 
 class InvalidCommand < Command
 

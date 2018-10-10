@@ -1,6 +1,6 @@
-require_relative './movements'
-require_relative './command'
-require_relative 'error_reporter'
+require_relative '../movements'
+require_relative '../command'
+require_relative '../error_reporter'
 
 class MoveCommand < Command
   def initialize(robot, table)

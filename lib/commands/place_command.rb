@@ -1,4 +1,4 @@
-require_relative './error_reporter'
+require_relative '../error_reporter'
 
 class PlaceCommand
   attr_reader :robot, :table, :position
@@ -9,7 +9,9 @@ class PlaceCommand
   end
 
   def execute
-    if !@position.facing.nil?
+    has_args = !@position.x.nil? && !@position.y.nil? && !@position.facing.nil?
+
+    if has_args
       if @table.valid_position?(@position)
         puts "Placed at #{@position.x}, #{@position.y}, facing #{@position.facing}"
         @robot.current_position = @position
@@ -17,7 +19,7 @@ class PlaceCommand
         ErrorReporter.new('invalid_position')
       end
     else
-      ErrorReporter.new('invalid_facing')
+      ErrorReporter.new('invalid_position')
     end
   end
 end

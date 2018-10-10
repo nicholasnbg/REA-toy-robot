@@ -1,11 +1,11 @@
 require_relative './parser'
 require_relative './position'
-require_relative './place_command'
-require_relative './move_command'
-require_relative './right_command'
-require_relative './left_command'
-require_relative './report_command'
-require_relative './invalid_command'
+require_relative './commands/place_command'
+require_relative './commands/move_command'
+require_relative './commands/right_command'
+require_relative './commands/left_command'
+require_relative './commands/report_command'
+require_relative './commands/invalid_command'
 
 class Commander
   def initialize(robot, table, parser)
@@ -27,11 +27,15 @@ class Commander
 
     case command
     when 'place'
-      x = args[0].to_i
-      y = args[1].to_i
-      facing = args[2].to_sym
+      if args.length == 3
+        x = args[0].to_i
+        y = args[1].to_i
+        facing = args[2].to_sym
 
-      position = Position.new(x, y, facing)
+        position = Position.new(x, y, facing)
+      else
+        position = Position.new(nil, nil, nil,)
+      end
 
       PlaceCommand.new(@robot, @table, position)
     when 'move'
