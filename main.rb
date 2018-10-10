@@ -1,3 +1,4 @@
+require_relative './lib/robo_error'
 Dir[File.join(__dir__, 'lib', '**', '*.rb')].each { |file| require file }
 require_relative './dialogue'
 
