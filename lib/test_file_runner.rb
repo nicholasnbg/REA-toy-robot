@@ -11,7 +11,7 @@ class TestFileRunner
     if File.exist?(file)
       execute_commands_from(file)
     else
-      ErrorReporter.error(RoboErrors::NoTestFile.new(test_file_name))
+      ErrorReporter.error(RoboError::NoTestFile.new(test_file_name))
     end
   end
 

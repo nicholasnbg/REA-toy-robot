@@ -1,4 +1,4 @@
-class RoboErrors::NotPlaced < StandardError
+class RoboError::NotPlaced < StandardError
   def initialize
     super('Whoops, the robot has not been placed yet')
   end

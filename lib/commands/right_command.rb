@@ -14,7 +14,7 @@ class RightCommand < Command
       robot.current_position = new_position
       puts "Turning right, now facing #{@robot.current_position.facing}"
     else
-      ErrorReporter.error(RoboErrors::NotPlaced.new)
+      ErrorReporter.error(RoboError::NotPlaced.new)
     end
   end
 end

@@ -8,6 +8,6 @@ class InvalidCommand < Command
   end
 
   def execute
-    ErrorReporter.error(RoboErrors::InvalidCommand.new)
+    ErrorReporter.error(RoboError::InvalidCommand.new)
   end
 end
