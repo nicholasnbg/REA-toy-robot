@@ -4,4 +4,8 @@ class Command
     @table = table
     @position = position
   end
+
+  def execute
+
+  end
 end
