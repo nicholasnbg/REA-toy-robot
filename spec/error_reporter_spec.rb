@@ -1,10 +1,14 @@
 require 'spec_helper'
 
 describe ErrorReporter do
-  let(:error_reporter) { described_class.new(error_type) }
-  let(:error_type) { 'not_placed' }
+  let(:error_reporter) { class_double(described_class) }
+  let(:error_object) { RoboError::NotPlaced.new }
 
-  it 'has an error name of "NotPlaced"' do
-    expect(error_reporter.error_name).to eq 'NotPlaced'
+  before do
+    allow(error_reporter).to receive(:error).with(error_object)
+  end
+
+  it 'executes error method' do
+    expect(ErrorReporter.error(error_object)).to have_received(:error)
   end
 end

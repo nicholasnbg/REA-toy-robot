@@ -9,6 +9,7 @@ describe LeftCommand do
   describe '#execute' do
     subject { left_command.execute }
 
+
     context 'robot is placed' do
       let(:position) { Position.new(2,2,:north) }
       let(:expected_position) { Position.new(2,2,:west) }
@@ -24,12 +25,17 @@ describe LeftCommand do
     end
 
     context 'robot is not placed' do
-      it 'leaves robot current position unchanged' do
-        expect(robot.current_position).to eq nil
+      # it 'leaves robot current position unchanged' do
+      #   expect(robot.current_position).to eq nil
+      # end
+
+      before do
+        subject
       end
 
+      let(:error_reporter) { class_double(ErrorReporter) }
       it 'returns an ErrorReporter' do
-        expect(subject).to be_a(ErrorReporter)
+        expect(error_reporter).to receive(:error)
       end
     end
   end
