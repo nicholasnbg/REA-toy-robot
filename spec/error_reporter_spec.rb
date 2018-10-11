@@ -25,8 +25,4 @@ describe ErrorReporter do
       expect($stdout).to have_received(:puts).with("Message: #{error_message}")
     end
   end
-
-  it 'executes error method' do
-    expect(ErrorReporter.error(error_object)).to have_received(:error)
-  end
 end
