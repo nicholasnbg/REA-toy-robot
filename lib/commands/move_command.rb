@@ -16,6 +16,8 @@ class MoveCommand < Command
     end
   end
 
+  private
+
   def move_robot_forward
     new_position = Movements.move_forward(@robot.current_position)
     if @table.valid_position?(new_position)
