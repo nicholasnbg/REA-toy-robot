@@ -23,14 +23,17 @@ describe PlaceCommand do
     context 'with invalid position' do
       let(:position) { Position.new(table_length + 1, table_width + 1, :north) }
 
-      before { subject }
+      before do
+        allow(ErrorReporter).to receive(:error)
+        subject
+      end
 
       it 'does not place robot at position' do
         expect(robot.current_position).not_to eq position
       end
 
       it 'returns ErrorReporter' do
-        expect(subject).to be_a(ErrorReporter)
+        expect(ErrorReporter).to have_received(:error).with(RoboError::InvalidPosition)
       end
     end
   end
