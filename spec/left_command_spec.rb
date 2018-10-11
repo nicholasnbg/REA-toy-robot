@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe LeftCommand do
-  let(:robot) { Robot.new }
-  let(:table) { Table.new(5,5) }
-  let(:place_command) { PlaceCommand.new(robot, table, position) }
+  let(:robot) { instance_double("Robot", placed?: robot_is_placed) }
   let(:left_command) { described_class.new(robot) }
 
   describe '#execute' do
@@ -11,31 +9,36 @@ describe LeftCommand do
 
 
     context 'robot is placed' do
-      let(:position) { Position.new(2,2,:north) }
-      let(:expected_position) { Position.new(2,2,:west) }
+      let(:robot_is_placed) { true }
+      let(:current_position) { instance_double("Position") }
+      let(:new_position) { instance_double("Position", facing: :east) }
 
       before do
-        place_command.execute
+        allow(robot).to receive(:current_position).and_return(current_position, new_position)
+        allow(Movements).to receive(:rotate_left).with(current_position) { new_position }
+        allow(robot).to receive(:current_position=).with(new_position)
         subject
       end
 
-      it 'rotates robot to east' do
-        expect(robot.current_position).to eq expected_position
+      it 'gives robot new position' do
+        expect(robot).to have_received(:current_position=).with(new_position)
       end
     end
 
     context 'robot is not placed' do
-      # it 'leaves robot current position unchanged' do
-      #   expect(robot.current_position).to eq nil
-      # end
+      let(:robot_is_placed) { false }
 
+      # You need to allow the Error reporter to receive the error method call first before doing the expect
+      # in a before block do: allow(ErrorReporter).to receive(:error)
+      # somewhere: subject called
+      # expect(ErrorReporter).to have_received(:error).with(an_instance_of(RoboError::NotPlaced))
       before do
+        allow(ErrorReporter).to receive(:error)
         subject
       end
 
-      let(:error_reporter) { class_double(ErrorReporter) }
-      it 'returns an ErrorReporter' do
-        expect(error_reporter).to receive(:error)
+      it 'ErrorReporter receives message' do
+        expect(ErrorReporter).to have_received(:error).with(RoboError::NotPlaced)
       end
     end
   end

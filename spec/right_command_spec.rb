@@ -1,35 +1,39 @@
 require 'spec_helper'
 
 describe RightCommand do
-  let(:robot) { Robot.new }
-  let(:table) { Table.new(5,5) }
-  let(:place_command) { PlaceCommand.new(robot, table, position) }
+  let(:robot) { instance_double("Robot", placed?: robot_is_placed) }
   let(:right_command) { described_class.new(robot) }
 
   describe '#execute' do
     subject { right_command.execute }
 
     context 'robot is placed' do
-      let(:position) { Position.new(2,2,:north) }
-      let(:expected_position) { Position.new(2,2,:east) }
+      let(:robot_is_placed) { true }
+      let(:current_position) { instance_double("Position") }
+      let(:new_position) { instance_double("Position", facing: :east) }
 
       before do
-        place_command.execute
+        allow(robot).to receive(:current_position).and_return(current_position, new_position)
+        allow(Movements).to receive(:rotate_right).with(current_position) { new_position }
+        allow(robot).to receive(:current_position=).with(new_position)
         subject
       end
 
-      it 'rotates robot to east' do
-        expect(robot.current_position).to eq expected_position
+      it 'gives robot new position' do
+        expect(robot).to have_received(:current_position=).with(new_position)
       end
     end
 
     context 'robot is not placed' do
-      it 'leaves robot current position unchanged' do
-        expect(robot.current_position).to eq nil
+      let(:robot_is_placed) { false }
+
+      before do
+        allow(ErrorReporter).to receive(:error)
+        subject
       end
 
-      it 'returns and ErrorReporter' do
-        expect(subject).to be_a(ErrorReporter)
+      it 'ErrorReporter receives message' do
+        expect(ErrorReporter).to have_received(:error).with(RoboError::NotPlaced)
       end
     end
   end
