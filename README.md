@@ -41,7 +41,7 @@ Available commands are
 * EXIT - will finished the toy robot simulation
 
 
-##Testing
+## Testing
 You can run the test suite with the command 
 
 `rspec`
