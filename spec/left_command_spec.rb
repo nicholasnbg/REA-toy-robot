@@ -28,10 +28,6 @@ describe LeftCommand do
     context 'robot is not placed' do
       let(:robot_is_placed) { false }
 
-      # You need to allow the Error reporter to receive the error method call first before doing the expect
-      # in a before block do: allow(ErrorReporter).to receive(:error)
-      # somewhere: subject called
-      # expect(ErrorReporter).to have_received(:error).with(an_instance_of(RoboError::NotPlaced))
       before do
         allow(ErrorReporter).to receive(:error)
         subject
