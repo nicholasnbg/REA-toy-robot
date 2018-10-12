@@ -5,6 +5,10 @@ You can clone the program using
 
 `git clone https://github.com/nicholasnbg/REA-toy-robot.git`
 
+Move into the project directory with 
+
+`cd REA-toy-robot`
+
 To install the dependencies
 
 `gem install bundler`
