@@ -6,16 +6,21 @@ class TestFileRunner
     @test_dir = tests_dir
   end
 
-  def run(test_file_name)
-    file = [@test_dir, test_file_name].join
-    if File.exist?(file)
-      execute_commands_from(file)
+  def run(test_file_name = nil)
+    if test_file_name
+      file = [@test_dir, test_file_name].join
+      if File.exist?(file)
+        execute_commands_from(file)
+      else
+        ErrorReporter.error(RoboError::NoTestFile.new(test_file_name))
+      end
     else
-      ErrorReporter.error(RoboError::NoTestFile.new(test_file_name))
+      ErrorReporter.error(RoboError::NoTestFile.new(''))
     end
   end
 
   private
+
   def execute_commands_from(file)
     File.readlines(file).each do |line|
       if !line.match(/\A#/)
