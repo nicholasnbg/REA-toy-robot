@@ -13,13 +13,6 @@ class Parser
     @command = @args.shift
     @args = @args.join('').split(',')
 
-    if @args.length > 1
-      unless /[0-9]/.match(@args[0]) &&  /[0-9]/.match(@args[1])
-        @args[0] = nil
-        @args[1] = nil
-      end
-    end
-
     CommandRequest.new(@command, @args)
   end
 end

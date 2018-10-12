@@ -26,7 +26,8 @@ class Commander
 
     case command
     when 'place'
-      if args.length == 3
+      valid_x_y = /[0-9]/.match(args[0]) &&  /[0-9]/.match(args[1])
+      if args.length == 3 && valid_x_y
         x = args[0].to_i
         y = args[1].to_i
         facing = args[2].to_sym

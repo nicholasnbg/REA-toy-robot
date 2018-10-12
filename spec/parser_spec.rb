@@ -77,19 +77,6 @@ describe Parser do
             expect(subject.args).to eq expected_args
           end
         end
-
-        context 'with non number arguments for x + y' do
-          let(:input) { 'place text, text, north' }
-          let(:expected_args) { [nil, nil, 'north'] }
-
-          it 'returns CommandRequest object' do
-            expect(subject).to be_a CommandRequest
-          end
-
-          it 'has @args of [nil,nil,"north"]' do
-            expect(subject.args).to eq expected_args
-          end
-        end
       end
     end
   end
