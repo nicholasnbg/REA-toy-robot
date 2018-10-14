@@ -10,6 +10,10 @@ class Robot
   end
 
   def report
-    puts "Location: x: #{@current_position.x}, y: #{@current_position.y}, facing #{@current_position.facing.to_s}"
+    if placed?
+      puts "Location: x: #{@current_position.x}, y: #{@current_position.y}, facing #{@current_position.facing.to_s}"
+    else
+      ErrorReporter.error(RoboError::NotPlaced.new)
+    end
   end
 end
