@@ -1,7 +1,3 @@
-require_relative '../movements'
-require_relative '../command'
-require_relative '../error_reporter'
-
 class RightCommand < Command
   attr_reader :robot
   def initialize(robot)

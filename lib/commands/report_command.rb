@@ -1,5 +1,3 @@
-require_relative '../command'
-
 class ReportCommand < Command
 
   def initialize(robot)

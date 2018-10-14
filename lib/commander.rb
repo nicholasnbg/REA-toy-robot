@@ -1,11 +1,3 @@
-require_relative './position'
-require_relative './commands/place_command'
-require_relative './commands/move_command'
-require_relative './commands/right_command'
-require_relative './commands/left_command'
-require_relative './commands/report_command'
-require_relative './commands/invalid_command'
-
 class Commander
   def initialize(robot, table, parser)
     @robot = robot

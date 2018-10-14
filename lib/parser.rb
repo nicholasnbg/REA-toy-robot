@@ -1,5 +1,3 @@
-require_relative './command_request'
-
 class Parser
 
   def initialize

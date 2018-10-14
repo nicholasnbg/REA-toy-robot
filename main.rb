@@ -1,6 +1,7 @@
-require_relative './lib/robo_error'
-require_relative './lib/command'
-Dir[File.join(__dir__, 'lib', '**', '*.rb')].each { |file| require file }
+require 'require_all'
+require_all 'lib/**.rb'
+require_all 'lib/errors/**.rb'
+require_all 'lib/commands/**.rb'
 require_relative './dialogue'
 
 robot = Robot.new
