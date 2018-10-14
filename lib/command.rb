@@ -6,6 +6,6 @@ class Command
   end
 
   def execute
-
+    ErrorReporter.error(RoboError::MethodNotImplemented.new)
   end
 end
