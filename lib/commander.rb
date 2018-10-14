@@ -1,6 +1,7 @@
 require_relative './position'
 require_relative './commands/place_command'
 require_relative './commands/move_command'
+require_relative './commands/jump_command'
 require_relative './commands/right_command'
 require_relative './commands/left_command'
 require_relative './commands/report_command'
@@ -40,6 +41,8 @@ class Commander
       PlaceCommand.new(@robot, @table, position)
     when 'move'
       MoveCommand.new(@robot, @table)
+    when 'jump'
+      JumpCommand.new(@robot, @table)
     when 'right'
       RightCommand.new(@robot)
     when 'left'
