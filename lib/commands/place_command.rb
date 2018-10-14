@@ -13,6 +13,7 @@ class PlaceCommand
 
     if has_args
       if @table.valid_position?(@position)
+        @table.add_object(@robot) if @robot.current_position == nil
         puts "Placed at #{@position.x}, #{@position.y}, facing #{@position.facing}"
         @robot.current_position = @position
       else
