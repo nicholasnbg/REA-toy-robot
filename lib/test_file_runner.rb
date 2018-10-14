@@ -24,7 +24,7 @@ class TestFileRunner
   def execute_commands_from(file)
     File.readlines(file).each do |line|
       if !line.match(/\A#/)
-        command = @commander.return_command(line)
+        command = @commander.return_command(line.downcase)
         command.execute
       else
         puts line

@@ -1,5 +1,3 @@
-require_relative './position'
-
 class Movements
   class << self
 
@@ -19,8 +17,8 @@ class Movements
 
     def move_forward(position)
       translate = {
-          x: translations[position.facing][0],
-          y: translations[position.facing][1]
+        x: translations[position.facing][0],
+        y: translations[position.facing][1]
       }
 
       new_x = position.x + translate[:x]
@@ -33,12 +31,13 @@ class Movements
     def bearings
       %i[north east south west]
     end
+
     def translations
       {
-          north: [0, 1],
-          south: [0, -1],
-          east: [1, 0],
-          west: [-1, 0]
+        north: [0, 1],
+        south: [0, -1],
+        east: [1, 0],
+        west: [-1, 0]
       }
     end
   end

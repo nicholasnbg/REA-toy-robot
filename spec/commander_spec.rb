@@ -10,7 +10,7 @@ describe Commander do
     subject { commander.return_command(input) }
 
     context 'passed place command' do
-      let(:input) { "place 1,2,north" }
+      let(:input) { 'place 1,2,north' }
 
       it 'returns PlaceCommand object' do
         expect(subject).to be_a PlaceCommand
@@ -18,7 +18,7 @@ describe Commander do
     end
 
     context 'passed move command' do
-      let(:input) { "move" }
+      let(:input) { 'move' }
 
       it 'returns MoveCommand object' do
         expect(subject).to be_a MoveCommand
@@ -26,7 +26,7 @@ describe Commander do
     end
 
     context 'passed right command' do
-      let(:input) { "right" }
+      let(:input) { 'right' }
 
       it 'returns RightCommand object' do
         expect(subject).to be_a RightCommand
@@ -34,7 +34,7 @@ describe Commander do
     end
 
     context 'passed left command' do
-      let(:input) { "left" }
+      let(:input) { 'left' }
 
       it 'returns LeftCommand object' do
         expect(subject).to be_a LeftCommand
@@ -42,7 +42,7 @@ describe Commander do
     end
 
     context 'passed report command' do
-      let(:input) { "report" }
+      let(:input) { 'report' }
 
       it 'returns ReportCommand object' do
         expect(subject).to be_a ReportCommand
@@ -50,7 +50,7 @@ describe Commander do
     end
 
     context 'passed invalid command' do
-      let(:input) { "something not a real command" }
+      let(:input) { 'something not a real command' }
 
       it 'returns InvalidCommand object' do
         expect(subject).to be_a InvalidCommand

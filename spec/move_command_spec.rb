@@ -59,7 +59,7 @@ describe MoveCommand do
     context 'moves to invalid position' do
 
       before do
-        allow(table).to receive(:valid_position?).with(new_position) { false}
+        allow(table).to receive(:valid_position?).with(new_position) { false }
         allow(robot).to receive(:current_position).and_return(current_position, new_position)
         allow(Movements).to receive(:move_forward).with(current_position) { new_position }
         allow(ErrorReporter).to receive(:error)

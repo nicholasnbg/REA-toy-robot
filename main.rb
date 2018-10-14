@@ -1,4 +1,5 @@
 require_relative './lib/robo_error'
+require_relative './lib/command'
 Dir[File.join(__dir__, 'lib', '**', '*.rb')].each { |file| require file }
 require_relative './dialogue'
 
@@ -7,7 +8,6 @@ table = Table.new(5,5)
 parser = Parser.new
 commander = Commander.new(robot, table, parser)
 test_runner = TestFileRunner.new(commander, './tests/')
-
 
 
 Dialogue.intro_dialogue
