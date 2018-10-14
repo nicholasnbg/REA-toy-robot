@@ -19,7 +19,7 @@ class PlaceCommand
         ErrorReporter.error(RoboError::InvalidPosition.new)
       end
     else
-      ErrorReporter.error(RoboError::InvalidPosition.new)
+      ErrorReporter.error(RoboError::InvalidPlace.new)
     end
   end
 end
